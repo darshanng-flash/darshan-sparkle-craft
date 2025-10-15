@@ -104,7 +104,9 @@ All colors MUST be HSL.
   }
 
   .glow-text {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5),
+      0 0 20px hsl(var(--primary) / 0.3),
+      0 0 30px hsl(var(--primary) / 0.2);
   }
 
   .card-glow {
@@ -113,6 +115,11 @@ All colors MUST be HSL.
 
   .vapor-text {
     animation: vapor 3s ease-in-out infinite;
+  }
+
+  .vapor-char {
+    display: inline-block;
+    animation: vapor-float 3s ease-in-out infinite;
   }
 }
 
@@ -124,5 +131,14 @@ All colors MUST be HSL.
   50% {
     filter: blur(2px);
     opacity: 0.8;
+  }
+}
+
+@keyframes vapor-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
   }
 }

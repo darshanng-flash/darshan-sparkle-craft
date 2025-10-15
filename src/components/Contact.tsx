@@ -90,20 +90,26 @@ export default function Contact() {
               return (
                 <motion.div
                   key={method.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1, type: "spring" }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <Card
-                    className={`p-6 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all cursor-pointer group ${
+                    className={`p-6 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all cursor-pointer group hover:shadow-xl hover:shadow-primary/10 ${
                       method.primary ? "card-glow" : ""
                     }`}
                     onClick={() => window.open(method.link, "_blank")}
                   >
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <motion.div 
+                        className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                      >
                         <Icon className="h-6 w-6 text-primary" />
-                      </div>
+                      </motion.div>
                       <div className="flex-1">
                         <div className="font-semibold">{method.label}</div>
                         <div className="text-sm text-muted-foreground">{method.value}</div>
@@ -122,23 +128,27 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
           >
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 w-full sm:w-auto"
-              onClick={() => window.open("/resume.pdf", "_blank")}
-            >
-              <Download className="mr-2 h-5 w-5" />
-              Download Resume
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary/50 hover:bg-primary/10 w-full sm:w-auto"
-              onClick={() => window.open("mailto:darshan@example.com", "_blank")}
-            >
-              <Mail className="mr-2 h-5 w-5" />
-              Send Email
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 w-full sm:w-auto"
+                onClick={() => window.open("/resume.pdf", "_blank")}
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Download Resume
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary/50 hover:bg-primary/10 w-full sm:w-auto"
+                onClick={() => window.open("mailto:darshan@example.com", "_blank")}
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Send Email
+              </Button>
+            </motion.div>
           </motion.div>
 
           {/* Footer Note */}

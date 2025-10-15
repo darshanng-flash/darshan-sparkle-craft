@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Instagram, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import VaporText from "./VaporText";
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -19,19 +20,11 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="text-center space-y-8"
         >
-          {/* Animated Name */}
-          <motion.h1
-            className="text-6xl md:text-8xl font-bold text-gradient vapor-text glow-text"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          >
-            Darshan N G
-          </motion.h1>
+          {/* Animated Name with Vapor Effect */}
+          <VaporText 
+            text="Darshan N G" 
+            className="text-6xl md:text-8xl font-bold text-gradient"
+          />
 
           {/* Role */}
           <motion.p

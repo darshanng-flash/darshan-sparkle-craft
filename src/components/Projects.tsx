@@ -61,12 +61,18 @@ export default function Projects() {
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100, rotateY: index % 2 === 0 ? -15 : 15 }}
+                animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.2, type: "spring" }}
+                whileHover={{ 
+                  scale: 1.02,
+                  rotateY: index % 2 === 0 ? 2 : -2,
+                  transition: { duration: 0.3 }
+                }}
+                style={{ perspective: 2000 }}
               >
                 <Card
-                  className={`p-6 md:p-8 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all ${
+                  className={`p-6 md:p-8 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all hover:shadow-2xl hover:shadow-primary/20 ${
                     project.featured ? "card-glow" : ""
                   }`}
                 >
@@ -86,41 +92,57 @@ export default function Projects() {
 
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <Badge
+                      {project.technologies.map((tech, techIndex) => (
+                        <motion.div
                           key={tech}
-                          variant="secondary"
-                          className="bg-primary/10 text-primary border-primary/20"
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                          transition={{ duration: 0.3, delay: index * 0.2 + techIndex * 0.05 }}
+                          whileHover={{ scale: 1.1, y: -2 }}
                         >
-                          {tech}
-                        </Badge>
+                          <Badge
+                            variant="secondary"
+                            className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors cursor-default"
+                          >
+                            {tech}
+                          </Badge>
+                        </motion.div>
                       ))}
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-3 pt-2">
+                    <motion.div 
+                      className="flex gap-3 pt-2"
+                      initial={{ opacity: 0 }}
+                      animate={isInView ? { opacity: 1 } : {}}
+                      transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
+                    >
                       {project.github && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="border-primary/50 hover:bg-primary/10"
-                          onClick={() => window.open(project.github, "_blank")}
-                        >
-                          <Github className="mr-2 h-4 w-4" />
-                          Code
-                        </Button>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="border-primary/50 hover:bg-primary/10"
+                            onClick={() => window.open(project.github, "_blank")}
+                          >
+                            <Github className="mr-2 h-4 w-4" />
+                            Code
+                          </Button>
+                        </motion.div>
                       )}
                       {project.live && (
-                        <Button
-                          size="sm"
-                          className="bg-primary hover:bg-primary/90"
-                          onClick={() => window.open(project.live, "_blank")}
-                        >
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Live Demo
-                        </Button>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                          <Button
+                            size="sm"
+                            className="bg-primary hover:bg-primary/90"
+                            onClick={() => window.open(project.live, "_blank")}
+                          >
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            Live Demo
+                          </Button>
+                        </motion.div>
                       )}
-                    </div>
+                    </motion.div>
                   </div>
                 </Card>
               </motion.div>
