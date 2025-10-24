@@ -121,6 +121,32 @@ All colors MUST be HSL.
     display: inline-block;
     animation: vapor-float 3s ease-in-out infinite;
   }
+
+  .name-shimmer {
+    animation: shimmer 18s linear infinite;
+    background-size: 200% 100%;
+  }
+
+  .theme-matched-card {
+    background: color-mix(in oklch, hsl(var(--background)) 85%, hsl(var(--card)) 15%);
+  }
+
+  .cylindrical-scroll-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .name-shimmer,
+    .vapor-char,
+    .language-icon {
+      animation: none !important;
+    }
+    
+    .cylindrical-scroll-container {
+      perspective: none;
+    }
+  }
 }
 
 @keyframes vapor {
@@ -140,5 +166,25 @@ All colors MUST be HSL.
   }
   50% {
     transform: translateY(-5px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2);
   }
 }

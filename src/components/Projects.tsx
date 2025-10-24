@@ -52,7 +52,7 @@ export default function Projects() {
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold text-gradient">Featured Projects</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A showcase of my recent work in web development, 3D graphics, and cybersecurity
+              Built 5+ projects showcasing interactive web experiences, 3D animations, and cybersecurity tools
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export default function Projects() {
                 style={{ perspective: 2000 }}
               >
                 <Card
-                  className={`p-6 md:p-8 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all hover:shadow-2xl hover:shadow-primary/20 ${
+                  className={`p-6 md:p-8 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all hover:shadow-2xl hover:shadow-primary/20 theme-matched-card ${
                     project.featured ? "card-glow" : ""
                   }`}
                 >

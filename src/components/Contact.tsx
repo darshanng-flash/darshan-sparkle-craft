@@ -61,7 +61,7 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="p-8 bg-card/50 backdrop-blur-lg border-primary/20 card-glow text-center">
+            <Card className="p-8 bg-card/50 backdrop-blur-lg border-primary/20 card-glow text-center theme-matched-card">
               <div className="space-y-6">
                 <div className="flex items-center justify-center gap-8">
                   <div className="flex items-center gap-2 text-muted-foreground">
@@ -97,7 +97,7 @@ export default function Contact() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <Card
-                    className={`p-6 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all cursor-pointer group hover:shadow-xl hover:shadow-primary/10 ${
+                    className={`p-6 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all cursor-pointer group hover:shadow-xl hover:shadow-primary/10 theme-matched-card ${
                       method.primary ? "card-glow" : ""
                     }`}
                     onClick={() => window.open(method.link, "_blank")}

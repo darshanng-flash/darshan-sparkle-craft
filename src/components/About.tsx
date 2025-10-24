@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card } from "@/components/ui/card";
-import { Code2, Palette, Shield } from "lucide-react";
+import { Code2, Palette, Shield, Globe } from "lucide-react";
 import profileImage from "@/assets/profile.jpg";
 
 export default function About() {
@@ -24,6 +24,33 @@ export default function About() {
       icon: Shield,
       title: "Cybersecurity",
       description: "Developing training platforms and simulations for red vs blue team scenarios",
+    },
+  ];
+
+  const skills = [
+    { name: "React", icon: "⚛️" },
+    { name: "Next.js", icon: "▲" },
+    { name: "TypeScript", icon: "TS" },
+    { name: "Tailwind", icon: "🎨" },
+    { name: "Three.js", icon: "🎲" },
+    { name: "Node.js", icon: "🟢" },
+  ];
+
+  const languages = [
+    { 
+      name: "English", 
+      proficiency: "Fluent",
+      icon: "🇬🇧"
+    },
+    { 
+      name: "Hindi", 
+      proficiency: "Native",
+      icon: "🇮🇳"
+    },
+    { 
+      name: "Kannada", 
+      proficiency: "Native",
+      icon: "🇮🇳"
     },
   ];
 
@@ -89,7 +116,7 @@ export default function About() {
                   }}
                   style={{ perspective: 1000 }}
                 >
-                  <Card className="p-6 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all hover:card-glow group hover:shadow-2xl hover:shadow-primary/20">
+                  <Card className="p-6 bg-card/50 backdrop-blur-lg border-primary/20 hover:border-primary/50 transition-all hover:card-glow group hover:shadow-2xl hover:shadow-primary/20 theme-matched-card">
                     <div className="space-y-4">
                       <motion.div 
                         className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors"
@@ -107,10 +134,88 @@ export default function About() {
             })}
           </div>
 
+          {/* Compact Skills Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="overflow-hidden"
+          >
+            <h3 className="text-2xl font-semibold mb-4 text-center">Skills</h3>
+            <div className="flex items-center justify-center gap-4 flex-wrap relative px-8">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.7 + index * 0.05 }}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 backdrop-blur-sm border border-primary/20"
+                >
+                  <span className="text-2xl" aria-hidden="true">{skill.icon}</span>
+                  <span className="text-sm font-medium">{skill.name}</span>
+                </motion.div>
+              ))}
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+            </div>
+          </motion.div>
+
+          {/* Languages Known */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <h3 className="text-2xl font-semibold mb-6 text-center">Languages Known</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+              {languages.map((language, index) => (
+                <motion.div
+                  key={language.name}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: 0.9 + index * 0.15,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  whileHover={{ 
+                    y: -4,
+                    transition: { duration: 0.6, ease: "easeInOut" }
+                  }}
+                  className="group"
+                >
+                  <Card className="p-6 bg-card/30 backdrop-blur-lg border-primary/20 hover:border-primary/40 transition-all hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.15)] theme-matched-card">
+                    <div className="space-y-4 text-center">
+                      <motion.div 
+                        className="text-5xl mx-auto language-icon"
+                        animate={{
+                          scale: [1, 1.1, 1],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          repeatDelay: 2,
+                          ease: "easeInOut"
+                        }}
+                        aria-hidden="true"
+                      >
+                        {language.icon}
+                      </motion.div>
+                      <h4 className="text-xl font-semibold">{language.name}</h4>
+                      <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+                        {language.proficiency}
+                      </span>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: "Projects Built", value: "15+" },
+              { label: "Projects Built", value: "5+" },
               { label: "Technologies", value: "20+" },
               { label: "Experience", value: "2+ Years" },
               { label: "Open Source", value: "Active" },
@@ -119,10 +224,26 @@ export default function About() {
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 1.2 + index * 0.1,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
                 className="text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold text-gradient">{stat.value}</div>
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 1.3 + index * 0.1,
+                    type: "spring",
+                    bounce: 0.4
+                  }}
+                  className="text-3xl md:text-4xl font-bold text-gradient"
+                >
+                  {stat.value}
+                </motion.div>
                 <div className="text-sm text-muted-foreground mt-2">{stat.label}</div>
               </motion.div>
             ))}

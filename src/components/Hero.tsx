@@ -1,9 +1,15 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Instagram, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import VaporText from "./VaporText";
+import { useRef } from "react";
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -12,7 +18,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center px-4 pt-16">
+    <section ref={sectionRef} id="hero" className="min-h-screen flex items-center justify-center px-4 pt-16 cylindrical-scroll-container">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,11 +26,25 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="text-center space-y-8"
         >
-          {/* Animated Name with Vapor Effect */}
-          <VaporText 
-            text="Darshan N G" 
-            className="text-6xl md:text-8xl font-bold text-gradient"
-          />
+          {/* Animated Name with Subtle Shimmer */}
+          <motion.h1
+            initial={{ opacity: 0, filter: "blur(10px)" }}
+            animate={{ 
+              opacity: 1, 
+              filter: "blur(0px)",
+            }}
+            transition={{ duration: 1.2 }}
+            className="text-6xl md:text-8xl font-bold text-gradient name-shimmer relative"
+          >
+            Darshan N G
+            <motion.div 
+              className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-accent"
+              style={{ 
+                width: useTransform(scrollYProgress, [0, 0.3], ["0%", "100%"]),
+                transformOrigin: "left"
+              }}
+            />
+          </motion.h1>
 
           {/* Role */}
           <motion.p
