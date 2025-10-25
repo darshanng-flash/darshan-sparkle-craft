@@ -13,45 +13,28 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-<<<<<<< HEAD
-      value: "darshan@example.com",
-      link: "mailto:darshan@example.com",
-=======
-      value: "darshanng492@example.com",
+      value: "darshanng492@gmail.com",
       link: "mailto:darshanng492@gmail.com",
->>>>>>> 48def00 (Initial commit: portfolio project)
       primary: true,
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       value: "Connect with me",
-<<<<<<< HEAD
-      link: "https://linkedin.com/in/darshang",
-=======
       link: "https://linkedin.com/in/darshan-ng-35b96b303",
->>>>>>> 48def00 (Initial commit: portfolio project)
       primary: true,
     },
     {
       icon: Github,
       label: "GitHub",
-      value: "@darshang",
-<<<<<<< HEAD
-      link: "https://github.com/darshang",
-=======
+      value: "@darshanng-flash",
       link: "https://github.com/darshanng-flash",
->>>>>>> 48def00 (Initial commit: portfolio project)
     },
     {
       icon: Instagram,
       label: "Instagram",
-      value: "@darshang",
-<<<<<<< HEAD
-      link: "https://instagram.com/darshang",
-=======
+      value: "@darshan__n_g",
       link: "https://www.instagram.com/darshan__n_g/",
->>>>>>> 48def00 (Initial commit: portfolio project)
     },
   ];
 
@@ -160,7 +143,7 @@ export default function Contact() {
                 size="lg"
                 variant="outline"
                 className="border-primary/50 hover:bg-primary/10 w-full sm:w-auto"
-                onClick={() => window.open("mailto:darshan@example.com", "_blank")}
+                onClick={() => window.open("mailto:darshanng492@gmail.com", "_blank")}
               >
                 <Mail className="mr-2 h-5 w-5" />
                 Send Email
