@@ -16,8 +16,8 @@ export default function Projects() {
       description:
         "Built with Next.js, React, and Tailwind CSS featuring custom animated sections, cursor and background VFX, EmailJS contact integration, and deployed on Vercel. Showcases advanced 3D animations and smooth user interactions.",
       technologies: ["Next.js", "React", "Tailwind", "Three.js", "Framer Motion", "EmailJS"],
-      github: "https://github.com/darshang",
-      live: "https://darshang.vercel.app",
+      github: "https://github.com/darshanng-flash/3d-Portfolio",
+      live: "https://3d-portfolio-br7x.vercel.app",
       featured: true,
     },
     {
@@ -25,7 +25,7 @@ export default function Projects() {
       description:
         "Interactive cybersecurity training platform featuring red team vs blue team scenarios, AI agent integration for dynamic challenges, authentication system, and AWS hosting guidance. Helps students learn security concepts through hands-on simulations.",
       technologies: ["React", "Node.js", "MongoDB", "AI Integration", "AWS"],
-      github: "https://github.com/darshang/cyberguard",
+      github: "https://github.com/darshanng-flash/CyberSec",
       live: "https://cyberguard.example.com",
       featured: true,
     },
@@ -160,7 +160,7 @@ export default function Projects() {
               size="lg"
               variant="outline"
               className="border-primary/50 hover:bg-primary/10"
-              onClick={() => window.open("https://github.com/darshang", "_blank")}
+              onClick={() => window.open("https://github.com/darshanng-flash?tab=repositories", "_blank")}
             >
               <Github className="mr-2 h-5 w-5" />
               View More on GitHub
