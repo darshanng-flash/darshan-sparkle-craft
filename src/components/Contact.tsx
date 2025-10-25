@@ -47,7 +47,6 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="space-y-12"
         >
-          {/* Header */}
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold text-gradient">Let's Connect</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -55,7 +54,6 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Availability Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -83,7 +81,6 @@ export default function Contact() {
             </Card>
           </motion.div>
 
-          {/* Contact Methods Grid */}
           <div className="grid md:grid-cols-2 gap-4">
             {contactMethods.map((method, index) => {
               const Icon = method.icon;
@@ -121,7 +118,6 @@ export default function Contact() {
             })}
           </div>
 
-          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -151,7 +147,6 @@ export default function Contact() {
             </motion.div>
           </motion.div>
 
-          {/* Footer Note */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
